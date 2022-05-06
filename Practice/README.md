@@ -2,8 +2,7 @@
 
 # Basics
 
-This write-up covers the basic knowledge required to start competitive coding. The contents of this write-up are not the author's own property but are a result of abstraction from multiple sources, and should be considered only for knowledge sharing.
-All the references are provided at the bottom of this page.
+This write-up serves as kick start guide for individuals already having basic cpp knowledge. The contents of this write-up are not completely author's content but are a result of abstraction from multiple sources - references are mentioned at the end.
 
 ## Data type ranges
 
@@ -17,9 +16,27 @@ All the references are provided at the bottom of this page.
 - **double** : 1.7E-308 to 1.7E+308
 - **long double** : 3.4E-4932 to 1.1E+4932
 
-## Macros
+## Macros and typedef
 
-[TO-DO]
+### Macros
+
+```c
+#define <alias> <code> // Syntax
+#define traverse(c, it) for(typeof(c.begin()) it: it!=c.end(); it++)
+#define max(a,b) (a>=b?a:b)
+#define min(a,b) (a<=b?a:b)
+```
+
+- Defined macros are not affected by block structure. A macro lasts until it is undefined with the #undef preprocessor directive.
+
+### typedef
+
+"typedef" is a keyword defined by the compiler and is used to provide an alias to either user-defined or existing data types.
+
+```c
+typedef unsigned long long int ULLI;
+typedef int I;
+```
 
 ## Standard Template Library
 
@@ -81,6 +98,17 @@ V2.rbegin();
 V2.end();
 V2.rend();
 
+// Creating vector from map
+map<string, int> m;
+vector<pair<string,int> > V6(m.begin(), m.end())
+
+// Copy
+vector<int> V7(10);
+vector<int> V8(20,-1);
+int V8_size = V8.size();
+V7.resize(V7.size() + V8_size);
+copy(V8.begin(), V8.end(), V7.end()-V8_size); // Check the copy in algorithm sec.
+
 // Pass by value
 void function(vector<int> V1){}
 
@@ -91,6 +119,13 @@ void function(vector<int> &V2){} // Use 'const' to ensure vector is immutable.
 #### Point/s:
 
 - Vector when passed by value as a parameter to a function consumes time and space, so pass only if required.
+- Vector does not reallocate memory on each push_back(). Indeed, when push_back() is invoked, vector really allocates more memory(usually double) than is needed for one additional element. At times, the additional memory might not be required, so to handle this vector provides a "reserve" method to define/extend expected no. of items to be added. The method allocates only the required space. Once, the defined reserved limit is utilized, each push_back will behave similar to without invoking reserve - assigning more space than actually required.
+
+```c
+vector<int> V(100, 0);
+V.reserve(120);
+// function to push_back 20 more elements.
+```
 
 ### 2. Pairs
 
@@ -194,11 +229,89 @@ find(begin, end, element);
 count(begin, end, element);
 next_permutation(begin, end); // Returns true if next permutation exists, otherwise false.
 prev_permutation(begin, end); // Returns true if prev permutation exists, otherwise false.
+copy(from_begin, from_end, to_begin);
 ```
 
 #### Point/s:
 
 - Sort elements to check all permutations before using "next_permutation"
+
+### 8. Queue, Deque, and Priority queue
+
+```c
+// QUEUE
+// Declaration
+queue<int> Q;
+Q.empty(); // Checks if the queue is empty or not.
+Q.front(); // Returns front element.
+Q.back(); // Returns last element.
+Q.push(element); // Insertion .
+Q.pop() // Deletion. Doesn't return the element. Use front() before.
+
+// DEQUE
+// If push front and pop back are also required use deque.
+deque<int> DQ;
+DQ.push_front(element);
+DQ.pop_back();
+
+// PRIORITY QUEUE: A binary heap implementation.
+priority_queue<int> PQ;
+PQ.empty(); // Checks if the queue is empty or not.
+PQ.top(); // Top element - also the greatest based on priority. Default is value.
+PQ.push(); // Insertion.
+PQ.pop(); // Deletion
+```
+
+- Using a custom comparator in priority_queue.
+
+```c
+class Point{
+  int x;
+  int y;
+};
+// Overload the operator function.
+class Comparator {
+  public:
+    bool operator(Point P1, Point P2){
+     return P1.y>P2.y;
+    }
+};
+
+// main
+int main(){
+  priority_queue<Point, vector<Point>, Comparator> PQ;
+  /* Some xyz operations on priority queue.*/
+  return 0;
+}
+```
+
+### 9. Extras
+
+- Sorting by overriding the 'operator <' method.
+
+```
+typedef struct point{
+    int x,y;
+    // Overriding the comparator function for sorting.
+    bool operator < (const point &p) const {
+        return (x == p.x?(y>p.y?y:p.y):(x>p.x?:x:p.x));
+    }
+}point;
+
+vector<point> points;
+// Some insertions
+sort(points.begin(), points.end());
+```
+
+- Using for_each loop
+
+```c
+// Syntax
+// for_each(start iterator, end iterator, function to be applied)
+#define init(it) (it = 0)
+int arr[10];
+for_each(arr, arr + 10, init)
+```
 
 ## References
 
