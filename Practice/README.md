@@ -21,7 +21,8 @@ This write-up serves as kick start guide for individuals already having basic cp
 ### Macros
 
 ```c
-#define <alias> <code> // Syntax
+// Syntax
+// #define <alias> <code>
 #define traverse(c, it) for(typeof(c.begin()) it: it!=c.end(); it++)
 #define max(a,b) (a>=b?a:b)
 #define min(a,b) (a<=b?a:b)
