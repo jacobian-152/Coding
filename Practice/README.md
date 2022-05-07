@@ -286,7 +286,19 @@ int main(){
 }
 ```
 
-### 9. Extras
+### 9. Stack
+
+```c
+stack<int> ST, ST1, ST2;
+int element = ST.top(); // Retrieves the top element.
+ST.push(element); // Pushes the element at top.
+ST.pop(); //Pops the top element.
+
+// Swapping contents b/w two stack contents.
+ST1.swap(ST2);
+```
+
+### 10. Extras
 
 - Sorting by overriding the 'operator <' method.
 
