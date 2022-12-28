@@ -4,6 +4,22 @@
 
 This write-up serves as kick start guide for individuals already having basic cpp knowledge. The contents of this write-up are not completely author's content but are a result of abstraction from multiple sources - references are mentioned at the end.
 
+## Naming Convention
+
+```c
+// Constant Naming 
+const int CONST_VAR = 10;
+
+// Global Variable
+int gVarGlobal = 10;
+
+// Local Variable 
+int some_var = 10
+
+// Function Naming
+int SomeFunction(int var)
+```
+
 ## Data type ranges
 
 - **int** : -32,768 to 32767
