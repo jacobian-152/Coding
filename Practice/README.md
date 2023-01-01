@@ -20,10 +20,10 @@ int some_var = 10
 int SomeFunction(int var)
 ```
 
-## Data type ranges
+## Data type ranges (32 bit)
 
-- **int** : -32,768 to 32767
-- **unsigned int** : 0 to 65535
+- **int** : -2,147,483,648 to 2,147,483,647
+- **unsigned int** : 0 to 4,294,967,295
 - **long int** : -2,147,483,648 to 2,147,483,647
 - **unsigned long int** :0 to 4,294,967,295
 - **long long int** : -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
