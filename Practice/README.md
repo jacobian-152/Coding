@@ -4,6 +4,10 @@
 
 This write-up serves as kick start guide for individuals already having basic cpp knowledge. The contents of this write-up are not completely author's content but are a result of abstraction from multiple sources - references are mentioned at the end.
 
+## Things to Keep in Mind
+- Math.min/max is faster compared to ternary or if-else block.
+- Use map and set's find() method and not the algorithm library's find().
+
 ## Naming Convention
 
 ```c
