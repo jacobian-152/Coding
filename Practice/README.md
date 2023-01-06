@@ -5,7 +5,7 @@
 This write-up serves as kick start guide for individuals already having basic cpp knowledge. The contents of this write-up are not completely author's content but are a result of abstraction from multiple sources - references are mentioned at the end.
 
 ## Things to Keep in Mind
-- Math.min/max is faster compared to ternary or if-else block.
+- Math.min/max is faster than ternary faster than if-else block. [Benchmark](https://www.measurethat.net/Benchmarks/Show/6528/0/mathmin-vs-ifelse-vs-ternary-operator)
 - Use map and set's find() method and not the algorithm library's find().
 
 ## Naming Convention
