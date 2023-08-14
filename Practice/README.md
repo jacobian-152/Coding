@@ -317,12 +317,63 @@ ST.pop(); //Pops the top element.
 // Swapping contents b/w two stack contents.
 ST1.swap(ST2);
 ```
+### 10. Class
+- Class basic structure and access operations
 
-### 10. Extras
+```c
+class Point {
+private: // default is private
+    int x;
+    int y;
+public:
+    Point(){};
+    Point(int x, int y){
+        this->x = x; // this is a pointer so use ->, instead of .
+        this->y = y;
+    }
+    void display(){
+        printf("Point x: %d, y: %d", this->x, this->y)
+    }
+};
+
+Point point = Point(1,2);
+point.display(); // Used . as point is a object not pointer
+```
+
+- Accessing variables of an array of pairs 
+
+```c
+std::vector<std::pair<int, int>> points;
+for (auto it = points.begin(); it!=points.end();i++){
+    printf("With pointers: %d %d", it->first, it->second);
+    printf("Without pointers: %d %d", (*it).first, (*it)second);
+}
+```
+
+### 11. Structure
+- Structure basic structure and access operations
+
+```c
+struct Employee
+{
+    std::string name;
+    int age;
+    float salary;
+};
+
+int main()
+{
+    Employee employee = { "Bob", 12, 23.0 };
+    // Check printing the string here
+    printf("Name: %s \nAge: %d \nSalary: %.10f\n", employee.name.c_str(), employee.age, employee.salary);
+}
+```
+
+### Extras
 
 - Sorting by overriding the 'operator <' method.
 
-```
+```c
 typedef struct point{
     int x,y;
     // Overriding the comparator function for sorting.
