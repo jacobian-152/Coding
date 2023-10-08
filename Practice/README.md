@@ -387,6 +387,76 @@ vector<point> points;
 sort(points.begin(), points.end());
 ```
 
+- Common comparator for Map, vector, priority queue, and set
+```c
+#include<bits/stdc++.h>
+
+using namespace std;
+
+class Compare{
+public:
+    bool operator()(const int &x, const int &y) const{
+        return x>y;
+    }
+};
+
+int main(){
+    cout<<"\nMap\n";
+    map<int, int, Compare> mp;
+    mp[1] = 2;
+    mp[2] = 3;
+    for(auto it = mp.begin(); it!=mp.end(); it++){
+        cout<<it->first<<" "<<it->second<<"\n";
+    }
+    cout<<"\nVector\n";
+    vector<int> vec = {1,2,3,4,5,6,7,8};
+    sort(vec.begin(), vec.end(), Compare());
+    
+    for(auto it = vec.begin(); it!=vec.end(); it++){
+        cout<<*it<<" ";
+    }
+    cout<<"\nPriority Queue\n";
+    
+    priority_queue<int, vector<int>, Compare> pq;
+    pq.push(8);
+    pq.push(7);
+    pq.push(6);
+    pq.push(5);
+    while(!pq.empty()){
+        cout<<pq.top()<<'\n';
+        pq.pop();
+    }
+    cout<<"\nSet\n";
+    set<int, Compare> s;
+    s.insert(1);
+    s.insert(2);
+    s.insert(4);
+    s.insert(3);
+    for (auto it=s.begin(); it!=s.end(); it++){
+        cout<<*it<<'\n';
+    }
+    
+    /*
+    Output:
+    Map
+    2 3
+    1 2
+    Vector
+    8 7 6 5 4 3 2 1 
+    Priority Queue
+    5
+    6
+    7
+    8
+    Set
+    4
+    3
+    2
+    1
+    */
+}
+```
+
 - Using for_each loop
 
 ```c
