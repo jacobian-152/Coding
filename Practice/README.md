@@ -467,7 +467,7 @@ int arr[10];
 for_each(arr, arr + 10, init)
 ```
 
-## Key Value store to output based on frequency
+- Dynamic frequency counter based on map and tiers 
 ```c
 class OrderedFreqCounter{
 private:
