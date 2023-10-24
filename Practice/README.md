@@ -467,6 +467,53 @@ int arr[10];
 for_each(arr, arr + 10, init)
 ```
 
+## Key Value store to output based on frequency
+```c
+class OrderedFreqCounter{
+private:
+    unordered_map<int, int> freqMap;
+    vector<vector<int>> levels;
+    int maxLevel = 1;
+    
+    inline int getIndex(int x){return x-1;}
+    
+public:
+    OrderedFreqCounter(){levels.push_back({});}
+    
+    void addElement(int x){
+        if (freqMap.find(x) != freqMap.end()){
+            freqMap[x]++;
+            if (freqMap[x] > maxLevel){
+                maxLevel = freqMap[x];
+                levels.push_back({x});
+            }else{
+                levels[getIndex(freqMap[x])].push_back(x);
+            }
+        }else{
+            freqMap[x] = 1;
+            levels[getIndex(freqMap[x])].push_back(x);
+        }
+    }
+    
+    void eraseElement(int x){
+        int ix = --freqMap[x];
+        if(ix == -1){
+            freqMap.erase(x);
+        }
+        ix = max(0, ix);
+        levels[ix].erase(find(levels[ix].begin(), levels[ix].end(), x));
+    }
+    
+    void display(){
+        for(int i=maxLevel-1;i>=0;i--){
+            for(int j=0;j<levels[i].size();j++){
+                cout<<levels[i][j]<<" ";
+            }
+            cout<<"\n";
+        }
+    }
+};
+```
 ## References
 
 1. [Power up C++ with the Standard Template Library Part One](https://www.topcoder.com/thrive/articles/Power%20up%20C++%20with%20the%20Standard%20Template%20Library%20Part%20One)
