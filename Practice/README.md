@@ -286,6 +286,43 @@ PQ.pop(); // Deletion
 - Using a custom comparator in priority_queue.
 
 ```c
+// Using operator overloading
+class Point{
+public:
+    int x;
+    int y:
+    Point(int x, int y){
+        this->x = x;
+        this->y = y;
+    }
+
+    bool operator< (const Point &obj) const{
+        // return this->x > obj.x; // Min priority queue
+        return this->x < obj.x; // Max priority queue
+    }
+};
+
+// Usage
+int main(){
+    priority_queue<Point> pq;
+    points.push(Point(1,2));
+    points.push(Point(4,2));
+    points.push(Point(5,2));
+    points.push(Point(3,2));
+
+    while(!points.empty()){
+        cout<<points.top().x<<" "<<points.top().y<<"\n";
+        points.pop();
+    }
+}
+/*
+Output:
+5 2
+4 2
+3 2
+1 2
+*/
+// External Comparator 
 class Point{
   int x;
   int y;
